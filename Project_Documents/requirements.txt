@@ -1,0 +1,24 @@
+﻿Mike Meding
+Professor Moussavi
+CS225
+27 February 2013
+Car Game Requirements
+(According to FURPS Model)
+1. Functionality
+1. This game will create a virtual car simulation
+2. The system will have a set of control buttons to allow the user to start , stop and reset the simulation. All of which will happen in real time.
+3. There is no real data transformation in this program as no real data will be stored within the project. It is only a single run simulation with a few functions.
+1. Data
+1. As stated before there is no input or output of data from this program other than what is required to display to the terminal screen which will be contained by the prorgam.
+2. No files will be saved.
+1. Usability
+1. This program is virtually self explanitory as it will only have 4 buttons. Reset, Pause, Run, and Step to allow control over the simulation.
+2. This system is very hard to misuse as only the 4 buttons allow for input each with their own set of restrictions such as you cannot step through a simulation while it is playing at full speed.
+1. Reliability
+1. No faults will be isolated with this program but perhaps a winner will be declared when the simulation has reached its end.
+2. No backups will be required for any data that is a part of the system for it to function however, the project files themselves will be under version control through the online repository github.
+1. Performance
+1. Execution speed will be pre-set within a timer function which is set to oscillate at two frequencies depending on whether or not the step button has been pressed. If the step button is active and the pause button has been pressed the timer will only refresh the positions of the cars only once as opposed to once per ~millisecond when play is active.
+1. Supportability
+1. A future update for this system could be to add a guided user input to setup the initial values for the cars and to be able to watch the flow based on those inputs. For now the system will remain with preset values and only a single flow layout.
+2. Our system for this project will be very modular and adding extra classes for adding input or extra control would require limited effort.
