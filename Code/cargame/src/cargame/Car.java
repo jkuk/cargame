@@ -1,26 +1,16 @@
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-=======
 import java.util.*;
->>>>>>> 7e05f1e319903f57896f5f9a8efea837a150b989
 import java.lang.Math;
 
 public class Car
 {
-<<<<<<< HEAD
-  private int speed;
-  private int mpg;
-  private int tankSize;
-  private int fuel;
-  private int distance;
-=======
   private double speed;
   private double mpg;
   private double tankSize;
   private double fuel;
   private double totalDistance;
   private double distance;
->>>>>>> 7e05f1e319903f57896f5f9a8efea837a150b989
   private ArrayList<Stop> stopList;
   private Stop lastStop;
   private Stop nextStop;
@@ -97,17 +87,12 @@ public class Car
     else
       nextStop = stopList.get(0);
   }
-<<<<<<< HEAD
-  public int findDistance()
-  {
-    distance = Math.sqrt(Math.abs(lastStop.getX()-nextStop.getX())^2
-                        +Math.abs(lastStop.getY()-nextStop.getY())^2);
-=======
+
   public void findDistance()
   {
     totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
                         +(lastStop.getY()-nextStop.getY())^2);
->>>>>>> 7e05f1e319903f57896f5f9a8efea837a150b989
+
   }
   public void refuel()
   {
