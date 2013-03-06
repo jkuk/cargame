@@ -1,5 +1,3 @@
-package cargame;
-
 import java.util.ArrayList;
 import java.lang.Math;
 
@@ -10,7 +8,7 @@ public class Car
   private int tankSize;
   private int fuel;
   private int distance;
-  private ArrayList<Stop> completedStops;
+  private ArrayList<Stop> stopList;
   private Stop lastStop;
   private Stop nextStop;
   private boolean raceFinished;
@@ -62,19 +60,22 @@ public class Car
   }
   public void setStop()
   {
-    completedStops.remove(lastStop);
+    stopList.remove(lastStop);
     lastStop = nextStop;
-    if(completedStops.isEmpty())
+    if(stopList.isEmpty())
       this.setRaceFinished(true);
     else
-      nextStop = completedStops.get(0);
+      nextStop = stopList.get(0);
   }
-  
+  public int findDistance()
+  {
+    distance = Math.sqrt(Math.abs(lastStop.getX()-nextStop.getX())^2
+                        +Math.abs(lastStop.getY()-nextStop.getY())^2);
+  }
   public void refuel()
   {
     this.setFuel(tankSize);
   }
-  
   public void drive()
   {
     for(int i = 1; i <= speed; i++)
