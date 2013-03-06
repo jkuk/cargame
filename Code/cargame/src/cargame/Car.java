@@ -14,22 +14,23 @@ public class Car
   private Stop nextStop;
   private boolean raceFinished;
   
-  public Car()
+  public Car(ArrayList<Stop> s)
   {
-    speed = 10;
-    mpg = 10;
-    tankSize = 10;
-    fuel = 10;
-    distance = 1000;
+    Random r = new Random();
+    
+    speed = (double)(r.nextInt(30) + 20);
+    mpg = (double)(r.nextInt(20) + 10);
+    tankSize = (double)(r.nextInt(10) + 10);
+    fuel = tankSize;
+    distance = 0;
     raceFinished = false;
     stopList = new ArrayList<Stop>();
-    stopList.add(Stop.A);
-    stopList.add(Stop.B);
-    stopList.add(Stop.C);
-    stopList.add(Stop.D);
-    
+    this.shuffleStops(s);
+    nextStop = stopList.get(0);
+    this.setStop();
+    this.findDistance();
   }
-  public void shuffleStops(ArrayList s)
+  public void shuffleStops(ArrayList<Stop> s)
   {
     Random r = new Random();
     int index;
@@ -76,10 +77,18 @@ public class Car
   {
     return fuel;
   }
+  public double getDistance()
+  {
+    return distance;
+  }
+  public double getTotalDistance()
+  {
+    return totalDistance;
+  }
   public void setStop()
   {
-    stopList.remove(lastStop);
     lastStop = nextStop;
+    stopList.remove(lastStop);
     if(stopList.isEmpty())
       this.setRaceFinished(true);
     else
