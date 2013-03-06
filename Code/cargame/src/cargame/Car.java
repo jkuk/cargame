@@ -1,13 +1,26 @@
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+import java.util.*;
+>>>>>>> 7e05f1e319903f57896f5f9a8efea837a150b989
 import java.lang.Math;
 
 public class Car
 {
+<<<<<<< HEAD
   private int speed;
   private int mpg;
   private int tankSize;
   private int fuel;
   private int distance;
+=======
+  private double speed;
+  private double mpg;
+  private double tankSize;
+  private double fuel;
+  private double totalDistance;
+  private double distance;
+>>>>>>> 7e05f1e319903f57896f5f9a8efea837a150b989
   private ArrayList<Stop> stopList;
   private Stop lastStop;
   private Stop nextStop;
@@ -21,20 +34,37 @@ public class Car
     fuel = 10;
     distance = 1000;
     raceFinished = false;
+    stopList = new ArrayList<Stop>();
+    stopList.add(Stop.A);
+    stopList.add(Stop.B);
+    stopList.add(Stop.C);
+    stopList.add(Stop.D);
+    
   }
-  public void setSpeed(int s)
+  public void shuffleStops(ArrayList s)
+  {
+    Random r = new Random();
+    int index;
+    while(!s.isEmpty())
+    {
+      index = r.nextInt(s.size());
+      stopList.add(s.get(index));
+      s.remove(index);
+    }
+  }
+  public void setSpeed(double s)
   {
     speed = s;
   }
-  public void setMPG(int m)
+  public void setMPG(double m)
   {
     mpg = m;
   }
-  public void setTankSize(int t)
+  public void setTankSize(double t)
   {
     tankSize = t;
   }
-  public void setFuel(int f)
+  public void setFuel(double f)
   {
     fuel = f;
   }
@@ -42,19 +72,19 @@ public class Car
   {
     raceFinished = b;
   }
-  public int getSpeed()
+  public double getSpeed()
   {
     return speed;
   }
-  public int getMPG()
+  public double getMPG()
   {
     return mpg;
   }
-  public int getTankSize()
+  public double getTankSize()
   {
     return tankSize;
   }
-  public int getFuel()
+  public double getFuel()
   {
     return fuel;
   }
@@ -67,10 +97,17 @@ public class Car
     else
       nextStop = stopList.get(0);
   }
+<<<<<<< HEAD
   public int findDistance()
   {
     distance = Math.sqrt(Math.abs(lastStop.getX()-nextStop.getX())^2
                         +Math.abs(lastStop.getY()-nextStop.getY())^2);
+=======
+  public void findDistance()
+  {
+    totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
+                        +(lastStop.getY()-nextStop.getY())^2);
+>>>>>>> 7e05f1e319903f57896f5f9a8efea837a150b989
   }
   public void refuel()
   {
