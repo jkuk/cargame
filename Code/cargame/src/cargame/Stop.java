@@ -1,3 +1,5 @@
+package cargame;
+
 public enum Stop{
   
   A("Boston", 100, 100),

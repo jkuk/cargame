@@ -1,3 +1,4 @@
+package cargame;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -86,6 +87,12 @@ public class Car
   public double getTotalDistance()
   {
     return totalDistance;
+  }
+  public Stop getLastStop(){ // added this method for GUI purposes ~julian
+    return lastStop;
+  }
+  public Stop getNextStop(){ // added this method for GUI purposes ~julian
+    return nextStop;
   }
   public void setStop()
   {
