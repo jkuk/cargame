@@ -3,7 +3,6 @@ package cargame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class GUI extends JFrame{
   private JButton playPauseButton, stepButton, resetButton;
@@ -65,6 +64,7 @@ public class GUI extends JFrame{
   
   // listener for the reset button
   private class ResetListener implements ActionListener{
+      @Override
     public void actionPerformed(ActionEvent e){
       // if the button is clicked, create a brand new graphics panel, which also creates a new track
       buildGraphicsPanel();
@@ -74,6 +74,7 @@ public class GUI extends JFrame{
   
   // listener for the pause/play button
   private class PauseListener implements ActionListener{
+      @Override
     public void actionPerformed(ActionEvent e){
       JButton pauseButton = (JButton)e.getSource(); // set up temporary button as the source
       aTrack.pause(); // pause or resume the game
@@ -87,12 +88,13 @@ public class GUI extends JFrame{
       
       while (!aTrack.getPaused()){
         // while the game is not paused, step the timer
-        aTrack.timeStep();
+        aTrack.play();
       }
     }
   }
   
   private class StepListener implements ActionListener{
+      @Override
     public void actionPerformed(ActionEvent e){
       if (!aTrack.getPaused()){
         // if the game is not paused, pause it
@@ -100,7 +102,7 @@ public class GUI extends JFrame{
         aTrack.pause();
       }
       // and step the timer
-      aTrack.timeStep();
+      aTrack.play();
     }
   }
 }
