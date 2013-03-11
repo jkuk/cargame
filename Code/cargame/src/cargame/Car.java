@@ -1,25 +1,38 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.*;
 =======
 import java.util.ArrayList;
+>>>>>>> upstream/master
+=======
+package cargame;
+
+import java.util.ArrayList;
+import java.util.*;
 >>>>>>> upstream/master
 import java.lang.Math;
 
 public class Car
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
   private double speed;
   private double mpg;
   private double tankSize;
   private double fuel;
   private double totalDistance;
   private double distance;
+<<<<<<< HEAD
 =======
   private int speed;
   private int mpg;
   private int tankSize;
   private int fuel;
   private int distance;
+>>>>>>> upstream/master
+=======
 >>>>>>> upstream/master
   private ArrayList<Stop> stopList;
   private Stop lastStop;
@@ -97,8 +110,15 @@ public class Car
   {
     return totalDistance;
   }
+  public Stop getLastStop(){ // added this method for GUI purposes ~julian
+    return lastStop;
+  }
+  public Stop getNextStop(){ // added this method for GUI purposes ~julian
+    return nextStop;
+  }
   public void setStop()
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     lastStop = nextStop;
     stopList.remove(lastStop);
@@ -106,11 +126,16 @@ public class Car
     stopList.remove(lastStop);
     lastStop = nextStop;
 >>>>>>> upstream/master
+=======
+    lastStop = nextStop;
+    stopList.remove(lastStop);
+>>>>>>> upstream/master
     if(stopList.isEmpty())
       this.setRaceFinished(true);
     else
       nextStop = stopList.get(0);
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
   public void findDistance()
   {
@@ -122,13 +147,21 @@ public class Car
     distance = Math.sqrt(Math.abs(lastStop.getX()-nextStop.getX())^2
                         +Math.abs(lastStop.getY()-nextStop.getY())^2);
 >>>>>>> upstream/master
+=======
+
+  public double findDistance()
+  {
+    totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
+                        +(lastStop.getY()-nextStop.getY())^2);
+    return totalDistance;
+
+>>>>>>> upstream/master
   }
   public void refuel()
   {
     this.setFuel(tankSize);
   }
-  public void drive()
-  {
+  public void drive() { //needs to occur on a step by step basis. or one step at a time.
     for(int i = 1; i <= speed; i++)
     {
       if(fuel == 0)
@@ -140,4 +173,5 @@ public class Car
       }
     }
   }
+      
 }
