@@ -104,18 +104,18 @@ public class Car
       nextStop = stopList.get(0);
   }
 
-  public void findDistance()
+  public double findDistance()
   {
     totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
                         +(lastStop.getY()-nextStop.getY())^2);
+    return totalDistance;
 
   }
   public void refuel()
   {
     this.setFuel(tankSize);
   }
-  public void drive()
-  {
+  public void drive() { //needs to occur on a step by step basis. or one step at a time.
     for(int i = 1; i <= speed; i++)
     {
       if(fuel == 0)
@@ -127,4 +127,5 @@ public class Car
       }
     }
   }
+      
 }
