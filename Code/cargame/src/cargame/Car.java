@@ -140,7 +140,7 @@ public class Car
   }
   public void drive() { //needs to occur on a step by step basis. or one step at a time.
     
-    if(fuel == 0)
+    if(fuel <= 0)
       break;
     else
     {
