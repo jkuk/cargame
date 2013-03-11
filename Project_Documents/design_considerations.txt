@@ -1,0 +1,25 @@
+David Tersoff
+Julian Kuk
+Mike Meding
+
+Professor Moussavi
+CS225
+
+Design Considerations
+
+	Car:
+There must be an object to represent a car.  Multiple instances of it will be created and utilized throughout the program.  The car also has its own responsibility and thus must be something more than a primitive data type.
+	Responsibilities:
+The car must know its velocity, fuel economy, and how much gas is in its tank in order to drive.  It also must know its departure location, its destination, the distance left until it reaches its destination, its next destination, and what locations it has already visited.  It will also be responsible for knowing whether it has completed the track.
+
+
+	Stop:
+Stop must either be its own class or enumerated type.  The car must store an array of stops in order to know which locations it has already been to, and the track must also have an array of stops.
+	Responsibilities:
+It must know where in the world it is located, via x-y coordinates.  It also must know its own name.
+
+
+	Track:
+The track must contain an array of cars and stops.  Multiple instances of it can potentially be initialized. It will be the super class that serves as the main control unit for the traveling cars.
+	Responsibilities:
+It must know what cars are currently on the track and what stops exist on it.  It will handle telling the cars what potential destinations they have.  It will handle the timing of the game, thus calling the car's method to drive around.  It will also track which cars have finished and in what order.
