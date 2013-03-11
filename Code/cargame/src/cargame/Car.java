@@ -1,3 +1,5 @@
+package cargame;
+
 import java.util.*;
 import java.util.ArrayList;
 
@@ -119,31 +121,14 @@ public class Car
     totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
                                 +(lastStop.getY()-nextStop.getY())^2);
   }
-  public int findDistance()
-  {
-    distance = Math.sqrt(Math.abs(lastStop.getX()-nextStop.getX())^2
-                           +Math.abs(lastStop.getY()-nextStop.getY())^2);
-    
-    
-  }
-  public double findDistance()
-  {
-    totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
-                                +(lastStop.getY()-nextStop.getY())^2);
-    return totalDistance;
-    
-    
-  }
   public void refuel()
   {
     this.setFuel(tankSize);
   }
   public void drive() { //needs to occur on a step by step basis. or one step at a time.
     
-    if(fuel <= 0)
-      break;
-    else
-    {
+    if(fuel > 0)
+    {    
       distance -= speed;
       fuel -= speed / mpg;
     }

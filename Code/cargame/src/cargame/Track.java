@@ -52,41 +52,44 @@ public class Track {
     }
 
     public void setCars(int numbOfCars) {
-        Random r = new Random(System.currentTimeMillis());
-        int index;
-
-        //temporarily keeps track of valid locations
-        ArrayList<Stop> locations2;
-        locations2 = new ArrayList<Stop>();
-
-        int[] indexArray;
-        indexArray = new int[locations.size()];
-
-        boolean contains = false;
-
         
-        for (int i = 0; i <= numbOfCars; i++) { // loop for all cars
-            for (int x = 0; x < locations.size(); x++) { // loop for starting positions
-                //randomised starting positon 1 - 4
-                index = (r.nextInt(4));
-                //random set of valid stops based on starting position
-
-                int y = 0;
-                while (contains == false) { // loop for not having multiples of the same position
-
-                    if (indexArray[y] == index) {
-                        contains = true;
-                        indexArray[x] = index;
-                        locations2.add(locations.get(index));
-                    }
-                    y++;
-                }
-            }
-            //instasiate new car with valid stops
-            cars.add(new Car(locations2));
-
-
-        }
+        
+//        Random r = new Random(System.currentTimeMillis());
+//        int index;
+//
+//        //temporarily keeps track of valid locations
+//        ArrayList<Stop> locations2;
+//        locations2 = new ArrayList<Stop>();
+//
+//        int[] indexArray;
+//        indexArray = new int[locations.size()];
+//
+//        boolean contains = false;
+//
+//        
+//        for (int i = 0; i <= numbOfCars; i++) { // loop for all cars
+//            for (int x = 0; x < locations.size(); x++) { // loop for starting positions
+//                //randomised starting positon 1 - 4
+//                index = (r.nextInt(4));
+//                //random set of valid stops based on starting position
+//
+//                int y = 0;
+//                while (contains == false) { // loop for not having multiples of the same position
+//
+//                    if (indexArray[y] == index) {
+//                        contains = true;
+//                        indexArray[x] = index;
+//                        locations2.add(locations.get(index));
+//                    }
+//                    y++;
+//                }
+//            }
+//            //instasiate new car with valid stops
+//            cars.add(new Car(locations));
+//            
+//
+//
+//        }
     } // should end up with an array list of cars with random starting positions and valid stops
 
     public boolean getPaused() {
