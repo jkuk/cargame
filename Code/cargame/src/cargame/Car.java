@@ -1,4 +1,6 @@
-package cargame;
+import java.util.*;
+import java.util.ArrayList;
+
 
 import java.util.ArrayList;
 import java.util.*;
@@ -12,10 +14,10 @@ public class Car
   private double fuel;
   private double totalDistance;
   private double distance;
-  private ArrayList<Stop> stopList;
   private Stop lastStop;
   private Stop nextStop;
-  private boolean raceFinished;
+  private ArrayList<Stop> stopList;
+    private boolean raceFinished;
   
   public Car(ArrayList<Stop> s)
   {
@@ -98,34 +100,54 @@ public class Car
   {
     lastStop = nextStop;
     stopList.remove(lastStop);
+    
+    stopList.remove(lastStop);
+    lastStop = nextStop;
+    
+    
+    lastStop = nextStop;
+    stopList.remove(lastStop);
+    
     if(stopList.isEmpty())
       this.setRaceFinished(true);
     else
       nextStop = stopList.get(0);
   }
-
+  
+  public void findDistance()
+  {
+    totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
+                                +(lastStop.getY()-nextStop.getY())^2);
+  }
+  public int findDistance()
+  {
+    distance = Math.sqrt(Math.abs(lastStop.getX()-nextStop.getX())^2
+                           +Math.abs(lastStop.getY()-nextStop.getY())^2);
+    
+    
+  }
   public double findDistance()
   {
     totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
-                        +(lastStop.getY()-nextStop.getY())^2);
+                                +(lastStop.getY()-nextStop.getY())^2);
     return totalDistance;
-
+    
+    
   }
   public void refuel()
   {
     this.setFuel(tankSize);
   }
   public void drive() { //needs to occur on a step by step basis. or one step at a time.
-    for(int i = 1; i <= speed; i++)
+    
+    if(fuel <= 0)
+      break;
+    else
     {
-      if(fuel == 0)
-        break;
-      else
-      {
-        distance -= speed;
-        fuel -= speed / mpg;
-      }
+      distance -= speed;
+      fuel -= speed / mpg;
     }
+    
   }
-      
+  
 }
