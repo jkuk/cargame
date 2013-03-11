@@ -1,7 +1,6 @@
 package cargame;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Track {
 
@@ -31,9 +30,9 @@ public class Track {
          * 
          * locations.size();
          **/
-        
+
         //super helpful comments btw julian. thanks.
-        
+
         locations.add(Stop.A);
         locations.add(Stop.B);
         locations.add(Stop.C);
@@ -52,7 +51,11 @@ public class Track {
     }
 
     public void setCars(int numbOfCars) {
-        
+
+        while (numbOfCars > 0) {
+            cars.add(new Car(locations));
+            numbOfCars -= 1; //incraments 
+        }
         
 //        Random r = new Random(System.currentTimeMillis());
 //        int index;
@@ -126,17 +129,20 @@ public class Track {
          //}
          }
          */
-        
+
 
         /*
          * Based on that notion I will simply set up the play function to be a wrapper of updatePosition()
          * Technically speaking you dont need to have play() at all but for simplicity sake we can leave it
          */
 
-        updatePosition();
+        updatePosition(); //snoop dogg wrapper function call :P
     }
 
     public void updatePosition() {
         // update new position of all cars by one step
+        for(int x = 0; x < cars.size(); x++){
+            cars.get(x).drive();
+        }
     }
 }
