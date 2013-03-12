@@ -11,7 +11,7 @@ public class GUI extends JFrame{
   
   private Track aTrack;
   
-  private final int WIDTH = 800, HEIGHT = 600;
+  private final int WIDTH = 800, HEIGHT = 800;
   
   private final String STEP = "Step";
   private final String RESET = "Reset";
@@ -20,16 +20,16 @@ public class GUI extends JFrame{
   
   public GUI(){
     // basic panel set up
-    setLayout(new BorderLayout());
     setSize(WIDTH, HEIGHT);
+    setLayout(new BorderLayout());
     
     // builds the 2 panels
     buildGraphicsPanel();
     buildButtonPanel();
     
     // adds the 2 panels to the main panel
-    add(graphicsPanel);
-    add(buttonPanel);
+    add(graphicsPanel, BorderLayout.CENTER);
+    add(buttonPanel, BorderLayout.SOUTH);
     
     // make the frame visible
     setVisible(true);
@@ -64,45 +64,54 @@ public class GUI extends JFrame{
   
   // listener for the reset button
   private class ResetListener implements ActionListener{
-      @Override
+    @Override
     public void actionPerformed(ActionEvent e){
       // if the button is clicked, create a brand new graphics panel, which also creates a new track
-      buildGraphicsPanel();
-      graphicsPanel.repaint(); // update it
+      remove(graphicsPanel); // remove the graphics panel
+      buildGraphicsPanel(); // rebuild it
+      add(graphicsPanel, BorderLayout.CENTER); // then readd it to the frame
+      
+      playPauseButton.setText(PLAY); // set the text to say play
+      
+      validate(); // validate
+      repaint(); // then update it
     }
   }
   
   // listener for the pause/play button
   private class PauseListener implements ActionListener{
-      @Override
+    @Override
     public void actionPerformed(ActionEvent e){
-      JButton pauseButton = (JButton)e.getSource(); // set up temporary button as the source
-      aTrack.pause(); // pause or resume the game
+      //aTrack.pause(); // pause or resume the game
       
       if (!aTrack.getPaused()){
-        pauseButton.setText(PAUSE); // if the game is now playing, set the text to say pause
+        //playPauseButton.setText(PAUSE); // if the game is now playing, set the text to say pause
       }
       else{
-        pauseButton.setText(PLAY); // else, set the text to say play
+        //playPauseButton.setText(PLAY); // else, set the text to say play
       }
       
-      while (!aTrack.getPaused()){
+      //while (!aTrack.getPaused()){
+      for (int i = 0; i < 10; i++){
         // while the game is not paused, step the timer
         aTrack.play();
+        repaint();
       }
     }
   }
   
   private class StepListener implements ActionListener{
-      @Override
+    @Override
     public void actionPerformed(ActionEvent e){
       if (!aTrack.getPaused()){
         // if the game is not paused, pause it
         // forces the game to be paused whenever the step button is clicked
         aTrack.pause();
+        playPauseButton.setText(PLAY); // set the text to say play
       }
       // and step the timer
       aTrack.play();
+      repaint();
     }
   }
 }
