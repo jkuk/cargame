@@ -58,6 +58,7 @@ public class GUICars extends JPanel{
       //stopImageString = IMAGE_DIRECTORY + STOP + i + IMAGE_EXTENSION;
       //stopImage = new File(BASE_DIRECTORY, stopImageString);
       stopImageString = STOP + i + IMAGE_EXTENSION;
+      System.out.println(stopImageString);
       stopImage = new File(baseLoc, stopImageString);
       stopIcon = new ImageIcon(stopImage.toString()); // create an image icon based on the constants and the index value
       
