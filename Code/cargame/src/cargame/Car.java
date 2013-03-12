@@ -19,6 +19,7 @@ public class Car
   private Stop lastStop;
   private Stop nextStop;
   private ArrayList<Stop> stopList;
+  private boolean raceFinished;
   
   public Car(ArrayList<Stop> s)
   {
@@ -27,24 +28,24 @@ public class Car
     speed = (double)(r.nextInt(30) + 20);
     mpg = (double)(r.nextInt(20) + 10);
     tankSize = (double)(r.nextInt(10) + 10);
+    
     fuel = tankSize;
-    distance = 0;
     raceFinished = false;
     stopList = new ArrayList<Stop>();
-    this.shuffleStops(s);
+    shuffleStops(s);
     nextStop = stopList.get(0);
-    this.setStop();
-    this.findDistance();
+    setStop();
   }
   public void shuffleStops(ArrayList<Stop> s)
   {
+    ArrayList<Stop> temp = new ArrayList<Stop>(s);
     Random r = new Random();
     int index;
-    while(!s.isEmpty())
+    while(!temp.isEmpty())
     {
-      index = r.nextInt(s.size());
-      stopList.add(s.get(index));
-      s.remove(index);
+      index = r.nextInt(temp.size());
+      stopList.add(temp.get(index));
+      temp.remove(index);
     }
   }
   public void setSpeed(double s)
@@ -91,6 +92,10 @@ public class Car
   {
     return totalDistance;
   }
+  public boolean getRaceFinished()
+  {
+    return raceFinished;
+  }
   public Stop getLastStop(){ // added this method for GUI purposes ~julian
     return lastStop;
   }
@@ -102,36 +107,47 @@ public class Car
     lastStop = nextStop;
     stopList.remove(lastStop);
     
-    stopList.remove(lastStop);
-    lastStop = nextStop;
-    
-    
-    lastStop = nextStop;
-    stopList.remove(lastStop);
-    
-    if(stopList.isEmpty())
+    if(stopList.isEmpty()){
+      
       this.setRaceFinished(true);
-    else
+      nextStop = null;
+      distance = 0;
+    }
+    else{
       nextStop = stopList.get(0);
+      findDistance();
+      distance = totalDistance;
+    }
   }
   
   public void findDistance()
   {
-    totalDistance = Math.sqrt((lastStop.getX()-nextStop.getX())^2
-                                +(lastStop.getY()-nextStop.getY())^2);
+    double tempX = lastStop.getX() - nextStop.getX();
+    double tempY = lastStop.getY() - nextStop.getY();
+    tempX *= tempX;
+    tempY *= tempY;
+    
+    totalDistance = Math.sqrt(tempX + tempY);
   }
   public void refuel()
   {
     this.setFuel(tankSize);
   }
   public void drive() { //needs to occur on a step by step basis. or one step at a time.
-    
-    if(fuel > 0)
-    {    
-      distance -= speed;
-      fuel -= speed / mpg;
+    if (raceFinished){
     }
-    
+    else{
+      if(fuel > 0)
+      {
+        distance -= speed;
+        fuel -= speed / mpg;
+      }
+      else{
+        refuel();
+      }
+      if (distance <= 0){
+        setStop();
+      }
+    }
   }
-  
 }

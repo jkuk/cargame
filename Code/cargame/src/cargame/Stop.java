@@ -2,10 +2,10 @@ package cargame;
 
 public enum Stop{
   
-  A("Boston", 100, 100),
-  B("New York", 200, 200),
-  C("Washington D.C.", 300, 300),
-  D("Seattle", 400, 400);
+  A("Boston", 400, 0),
+  B("New York", 400, 400),
+  C("Washington D.C.", 0, 0),
+  D("Seattle", 0, 400);
   
   private final String NAME;
   private final int X, Y;
