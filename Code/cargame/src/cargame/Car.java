@@ -19,7 +19,6 @@ public class Car
   private Stop lastStop;
   private Stop nextStop;
   private ArrayList<Stop> stopList;
-    private boolean raceFinished;
   
   public Car(ArrayList<Stop> s)
   {
