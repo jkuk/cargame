@@ -37,7 +37,7 @@ public class GUI extends JFrame{
   
   // build the graphics panel that has the track and cars
   private void buildGraphicsPanel(){
-    // create a new track -- not sure if we're going to pass parameters to the track
+    // create a new track
     aTrack = new Track();
     graphicsPanel = new GUICars(aTrack);
   }
@@ -51,16 +51,10 @@ public class GUI extends JFrame{
     stepButton = new JButton(STEP);
     resetButton = new JButton(RESET);
     
-    // create thread for playPauseButton
-    PlayPauseListener aPlayPlayPauseListener = new PlayPauseListener();
-    
-    
     // add the corresponding action listener to each button
     playPauseButton.addActionListener(new PlayPauseListener());
     stepButton.addActionListener(new StepListener());
     resetButton.addActionListener(new ResetListener());
-    
-    
     
     // add the buttons to the panel
     buttonPanel.add(playPauseButton);

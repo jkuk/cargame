@@ -96,10 +96,10 @@ public class Car
   {
     return raceFinished;
   }
-  public Stop getLastStop(){ // added this method for GUI purposes ~julian
+  public Stop getLastStop(){
     return lastStop;
   }
-  public Stop getNextStop(){ // added this method for GUI purposes ~julian
+  public Stop getNextStop(){
     return nextStop;
   }
   public void setStop()
@@ -133,7 +133,7 @@ public class Car
   {
     this.setFuel(tankSize);
   }
-  public void drive() { //needs to occur on a step by step basis. or one step at a time.
+  public void drive() {
     if (raceFinished){
     }
     else{

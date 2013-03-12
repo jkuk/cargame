@@ -8,32 +8,15 @@ import java.io.*;
 
 public class GUICars extends JPanel{
   // constants for image file names
-    
-  //Added these for you. correct file paths. simply put car_#.toSring() for full path (or put into array list if you like)
   private final File baseLoc = new File("images");
-  //private final static File car_0 = new File(baseLoc , "car_0.png");
-  //private final static File car_1 = new File(baseLoc , "car_1.png");
-  //private final static File car_2 = new File(baseLoc , "car_2.png");
-  //private final static File car_3 = new File(baseLoc , "car_3.png");
-  //private final static File car_4 = new File(baseLoc , "car_4.png");
-  
   private final String CAR = "car_";
   private final String STOP = "stop_";
-  //private final String BASE_DIRECTORY = "cargame";
-  //private final String IMAGE_DIRECTORY = "images//";
   private final String IMAGE_EXTENSION = ".png";
-  
-  //private final File IMAGE_DIRECTORY_FILE = new File(IMAGE_DIRECTORY);  
   
   private Track aTrack;
   
-  // the cars and stops will be displayed as jlabels with image icons
-  private ArrayList<JLabel> carJLabels;
-  private ArrayList<JLabel> stopJLabels;
-  
   private ArrayList<ImageIcon> carImageIcons;
   private ArrayList<ImageIcon> stopImageIcons;
-  // private JLabel carLabel;
   
   public GUICars(Track aTrack){
     this.aTrack = aTrack;
@@ -42,9 +25,7 @@ public class GUICars extends JPanel{
   }
   
   // draw the track
-  public void buildTrack(){
-    
-    JLabel stopLabel; // temporary JLabel to store each stop icon in, so it can be operated on, then added to the array
+  private void buildTrack(){
     ImageIcon stopIcon; // temporary ImageIcon so the stop icon can be operated on, then added to the jlabel
     ArrayList<Stop> stops = aTrack.getStops(); // temporarily store list of stops  
     
@@ -55,40 +36,31 @@ public class GUICars extends JPanel{
     
     // loop the the array list of stops in the track object
     for (int i = 0; i < stops.size(); i++){ // loop through the list of stops
-      //stopImageString = IMAGE_DIRECTORY + STOP + i + IMAGE_EXTENSION;
-      //stopImage = new File(BASE_DIRECTORY, stopImageString);
       stopImageString = STOP + i + IMAGE_EXTENSION;
       System.out.println(stopImageString);
       stopImage = new File(baseLoc, stopImageString);
       stopIcon = new ImageIcon(stopImage.toString()); // create an image icon based on the constants and the index value
-      
       stopImageIcons.add(stopIcon);
     }
   }
   
   // draw the cars
-  public void buildCars(){
+  private void buildCars(){
     ImageIcon carIcon; // temporary ImageIcon so the cars can be operated on, then added to the jlabel
     ArrayList<Car> cars = aTrack.getCars(); // temporariliy store list of cars
-    Stop carDeparture; // temporarily store car's departure location
+    //Stop carDeparture; // temporarily store car's departure location
     
     carImageIcons = new ArrayList<ImageIcon>(); // initialize the car array list
     
     File carImage;
     String carImageString;
     
-    for (int i = 0; i < cars.size(); i++){ // loops through the list of cars
-      //carIcon = new ImageIcon(IMAGE_DIRECTORY + CAR + i + IMAGE_EXTENSION); // create an image icon based on the constants and the index value
-      //carImage = new File(car_0.toString());
-      //carIcon = new ImageIcon(carImage.toString());
-      
+    for (int i = 0; i < cars.size(); i++){ // loops through the list of cars     
       carImageString = CAR + i + IMAGE_EXTENSION;
       carImage = new File(baseLoc, carImageString);
       carIcon = new ImageIcon(carImage.toString());
-      
       carImageIcons.add(carIcon);
-      
-      carDeparture = cars.get(i).getLastStop(); // store car's departure location
+      //carDeparture = cars.get(i).getLastStop(); // store car's departure location
     }
   }
   
