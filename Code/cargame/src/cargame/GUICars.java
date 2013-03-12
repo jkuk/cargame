@@ -10,21 +10,20 @@ public class GUICars extends JPanel{
   // constants for image file names
     
   //Added these for you. correct file paths. simply put car_#.toSring() for full path (or put into array list if you like)
-  private final static File baseLoc = new File("images");
-  private final static File car_0 = new File(baseLoc , "car_0.png");
-  private final static File car_1 = new File(baseLoc , "car_1.png");
-  private final static File car_2 = new File(baseLoc , "car_2.png");
-  private final static File car_3 = new File(baseLoc , "car_3.png");
-  private final static File car_4 = new File(baseLoc , "car_4.png");
+  private final File baseLoc = new File("images");
+  //private final static File car_0 = new File(baseLoc , "car_0.png");
+  //private final static File car_1 = new File(baseLoc , "car_1.png");
+  //private final static File car_2 = new File(baseLoc , "car_2.png");
+  //private final static File car_3 = new File(baseLoc , "car_3.png");
+  //private final static File car_4 = new File(baseLoc , "car_4.png");
   
   private final String CAR = "car_";
   private final String STOP = "stop_";
-  private final String BASE_DIRECTORY = "cargame";
-  private final String IMAGE_DIRECTORY = "images";
+  //private final String BASE_DIRECTORY = "cargame";
+  //private final String IMAGE_DIRECTORY = "images//";
   private final String IMAGE_EXTENSION = ".png";
-  // private final String TEST = "E:\\cs 225\\lab 3\\cargame\\Code\\cargame\\src\\cargame\\";
   
-  private final File IMAGE_DIRECTORY_FILE = new File(IMAGE_DIRECTORY);  
+  //private final File IMAGE_DIRECTORY_FILE = new File(IMAGE_DIRECTORY);  
   
   private Track aTrack;
   
@@ -34,7 +33,7 @@ public class GUICars extends JPanel{
   
   private ArrayList<ImageIcon> carImageIcons;
   private ArrayList<ImageIcon> stopImageIcons;
-  private JLabel carLabel;
+  // private JLabel carLabel;
   
   public GUICars(Track aTrack){
     this.aTrack = aTrack;
@@ -56,10 +55,12 @@ public class GUICars extends JPanel{
     
     // loop the the array list of stops in the track object
     for (int i = 0; i < stops.size(); i++){ // loop through the list of stops
-      stopImageString = IMAGE_DIRECTORY + STOP + i + IMAGE_EXTENSION;
-      stopImage = new File(BASE_DIRECTORY, stopImageString);
-      
+      //stopImageString = IMAGE_DIRECTORY + STOP + i + IMAGE_EXTENSION;
+      //stopImage = new File(BASE_DIRECTORY, stopImageString);
+      stopImageString = STOP + i + IMAGE_EXTENSION;
+      stopImage = new File(baseLoc, stopImageString);
       stopIcon = new ImageIcon(stopImage.toString()); // create an image icon based on the constants and the index value
+      
       stopImageIcons.add(stopIcon);
     }
   }
@@ -76,12 +77,14 @@ public class GUICars extends JPanel{
     String carImageString;
     
     for (int i = 0; i < cars.size(); i++){ // loops through the list of cars
-      carIcon = new ImageIcon(IMAGE_DIRECTORY + CAR + i + IMAGE_EXTENSION); // create an image icon based on the constants and the index value
-      carLabel = new JLabel(carIcon); // add the icon to the label
-        
-      carImage = new File(car_0.toString());
+      //carIcon = new ImageIcon(IMAGE_DIRECTORY + CAR + i + IMAGE_EXTENSION); // create an image icon based on the constants and the index value
+      //carImage = new File(car_0.toString());
+      //carIcon = new ImageIcon(carImage.toString());
       
+      carImageString = CAR + i + IMAGE_EXTENSION;
+      carImage = new File(baseLoc, carImageString);
       carIcon = new ImageIcon(carImage.toString());
+      
       carImageIcons.add(carIcon);
       
       carDeparture = cars.get(i).getLastStop(); // store car's departure location
