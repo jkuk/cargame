@@ -37,9 +37,13 @@ public class GUICars extends JPanel{
     // loop the the array list of stops in the track object
     for (int i = 0; i < stops.size(); i++){ // loop through the list of stops
       stopImageString = STOP + i + IMAGE_EXTENSION;
-      System.out.println(stopImageString);
       stopImage = new File(baseLoc, stopImageString);
-      stopIcon = new ImageIcon(stopImage.toString()); // create an image icon based on the constants and the index value
+      try{
+        stopIcon = new ImageIcon(stopImage.getCanonicalPath()); // create an image icon based on the constants and the index value
+      }
+      catch (IOException e){
+        stopIcon = new ImageIcon();
+      }
       stopImageIcons.add(stopIcon);
     }
   }
@@ -48,7 +52,6 @@ public class GUICars extends JPanel{
   private void buildCars(){
     ImageIcon carIcon; // temporary ImageIcon so the cars can be operated on, then added to the jlabel
     ArrayList<Car> cars = aTrack.getCars(); // temporariliy store list of cars
-    //Stop carDeparture; // temporarily store car's departure location
     
     carImageIcons = new ArrayList<ImageIcon>(); // initialize the car array list
     
@@ -58,9 +61,13 @@ public class GUICars extends JPanel{
     for (int i = 0; i < cars.size(); i++){ // loops through the list of cars     
       carImageString = CAR + i + IMAGE_EXTENSION;
       carImage = new File(baseLoc, carImageString);
-      carIcon = new ImageIcon(carImage.toString());
+      try{
+        carIcon = new ImageIcon(carImage.getCanonicalPath());
+      }
+      catch (IOException e){
+        carIcon = new ImageIcon();
+      }
       carImageIcons.add(carIcon);
-      //carDeparture = cars.get(i).getLastStop(); // store car's departure location
     }
   }
   
@@ -81,11 +88,11 @@ public class GUICars extends JPanel{
       }
     }
     
-    if (!aTrack.getCarsFinished().isEmpty()){
+    if (!aTrack.getCarsFinished().isEmpty()){ // if at least one car has finished ths race
       String winner = "";
       for (int i = 0; i < aTrack.getCars().size(); i++){
         if (aTrack.getCars().get(i) == aTrack.getCarsFinished().get(0)){
-          winner += i;
+          winner += i; // get the first car in the array, and declare it as the winner
         }
       }
       g.drawString("Car " + winner + " is the winner!", 250, 250);

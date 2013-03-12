@@ -1,9 +1,5 @@
 package cargame;
 
-import java.util.*;
-import java.util.ArrayList;
-
-
 import java.util.ArrayList;
 import java.util.*;
 import java.lang.Math;
