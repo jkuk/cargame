@@ -36,23 +36,13 @@ public class GUICars extends JPanel {
         // loop the the array list of stops in the track object
         for (int i = 0; i < stops.size(); i++) { // loop through the list of stops
             stopImageString = STOP + i + IMAGE_EXTENSION;
-
             stopImage = new File(baseLoc, stopImageString);
             
-            // debug error messages //
-            if (stopImage.exists()) {
-                System.out.println(stopImage);
-            }else{
-                System.out.println("FILE DOES NOT EXIST!");
-                System.out.println(stopImage.getAbsolutePath());
-            }
-
-
             try {
                 stopIcon = new ImageIcon(stopImage.getAbsolutePath()); // create an image icon based on the constants and the index value
             } catch (Exception e) {
                 stopIcon = new ImageIcon();
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(null, e.getMessage()); //just so we know...
             }
             stopImageIcons.add(stopIcon);
         }
@@ -72,9 +62,10 @@ public class GUICars extends JPanel {
             carImageString = CAR + i + IMAGE_EXTENSION;
             carImage = new File(baseLoc, carImageString);
             try {
-                carIcon = new ImageIcon(carImage.getCanonicalPath());
-            } catch (IOException e) {
+                carIcon = new ImageIcon(carImage.getAbsolutePath());
+            } catch (Exception e) {
                 carIcon = new ImageIcon();
+                JOptionPane.showMessageDialog(null, e.getMessage()); // just so we know...
             }
             carImageIcons.add(carIcon);
         }
